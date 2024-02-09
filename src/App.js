@@ -5,6 +5,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GeneralComponent from "./components/general-component";
 import Home from "./components/home";
 import Footer from "./components/footer";
+import searchFromIdAPI from "./data/search-from-id-API";
+import DetailPage from "./components/detail-page";
 
 function App() {
   return (
@@ -18,10 +20,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/:search" element={<GeneralComponent />} />
+              <Route path="/detail/:city" element={<DetailPage />} />
             </Routes>
           </main>
         </div>
-          <Footer />
+        <Footer />
       </BrowserRouter>
     </>
   );

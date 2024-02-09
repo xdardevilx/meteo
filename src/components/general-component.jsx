@@ -12,7 +12,7 @@ const GeneralComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       let citys1 = await searchAPI(params.search);
-      console.log(citys1.list);
+      // console.log(citys1.list);
       setcitys(citys1);
       setIsLoading(false);
     };
