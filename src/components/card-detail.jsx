@@ -3,6 +3,8 @@ import { Card } from "react-bootstrap";
 import searchFromIdAPI from "../data/search-from-id-API";
 import { useParams } from "react-router-dom";
 
+// purtroppo per mancanza di tempo non sono riuscito a fixare questo errore, mi arrivano correttamente i dati ma purtroppo non sono riuscito a capire bene il perchè arrivano soltato ad un compiling della pagina e non ad un aggiornamento deduco che non sia riuscito per problemi dovuti alla gestione del useEffect errata. ci sarà modo di approfondire
+
 const CardDetails = (props) => {
   const params = useParams();
   const [city, setcity] = useState([]);
@@ -12,7 +14,6 @@ const CardDetails = (props) => {
     const fetchData = async () => {
       let city1 = await searchFromIdAPI(params.city);
       setcity(city1);
-    //   console.log(city);
       setIsLoading(false);
     };
     fetchData();

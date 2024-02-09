@@ -8,6 +8,10 @@ import Footer from "./components/footer";
 import searchFromIdAPI from "./data/search-from-id-API";
 import DetailPage from "./components/detail-page";
 
+// puoi navigare nelle pagine senza problemi e per tornare alla home ti bastera cliccare sull'apposito bottone della posto sulla navbar
+
+// NB. per effettuare una ricerca per città ricordati di premere con il mouse su cerca
+
 function App() {
   return (
     <>

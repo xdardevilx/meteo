@@ -1,5 +1,6 @@
 import { API_KEY, BASE_URL } from "../const";
 
+// come nel progetto precedente esegue l'api in un foglio apparte per poi importarmelo dove mi serve in questo modo ho un codice più pulito e chiaro per risolvere eventuali errori chi si possono generare
 async function searchAPI(city) {
   const params = new URLSearchParams();
   params.append("q", city);

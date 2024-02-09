@@ -1,6 +1,6 @@
-import { Button } from "react-bootstrap";
+// import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CardMeteo = (props) => {
   let city = props.city;
