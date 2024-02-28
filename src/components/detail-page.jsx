@@ -7,9 +7,7 @@ const DetailPage = () => {
       <Container>
         <Row>
           <h1>Nel Dettaglio</h1>
-          <Col>
-            <CardDetails />
-          </Col>
+          <CardDetails />
         </Row>
       </Container>
     </>

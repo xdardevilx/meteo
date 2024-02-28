@@ -1,38 +1,64 @@
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col, Spinner } from "react-bootstrap";
 import searchFromIdAPI from "../data/search-from-id-API";
 import { useParams } from "react-router-dom";
 
-// purtroppo per mancanza di tempo non sono riuscito a fixare questo errore, mi arrivano correttamente i dati ma purtroppo non sono riuscito a capire bene il perchè arrivano soltato ad un compiling della pagina e non ad un aggiornamento deduco che non sia riuscito per problemi dovuti alla gestione del useEffect errata. ci sarà modo di approfondire
 
 const CardDetails = (props) => {
   const params = useParams();
-  const [city, setcity] = useState([]);
+  const [city, setCity] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       let city1 = await searchFromIdAPI(params.city);
-      setcity(city1);
+      setCity(city1);
       setIsLoading(false);
     };
     fetchData();
-    console.log(city);
-  }, []);
+  }, [params.city]);
 
+  let cityName = "";
+  let cityCountry = "";
+  if (city && city.city) {
+    cityName = city.city.name;
+    cityCountry = city.city.country;
+  }
+  console.log(city);
   return (
-    <Card className="h-100 d-flex flex-column justify-content-center align-items-center">
-      <Card.Img
-        variant="top"
-        // src={imgIcon}
-        style={{ height: "100px", width: "100px" }}
-      />
-      <Card.Body>
-        {/* <Card.Title>{city.name}</Card.Title> */}
-        <Card.Text>{/* temp-max {city.main.temp_max}° */}</Card.Text>
-        <Card.Text>{/* temp-min {city.main.temp_min}° */}</Card.Text>
-      </Card.Body>
-    </Card>
+    <>
+      {isLoading ? (
+        <Spinner animation="border" />
+      ) : (
+        <>
+          <h5>
+            {cityName} {cityCountry}
+          </h5>
+          {city.list
+            .filter((item, index) => index < 5)
+            .map((e) => {
+              return (
+                <Col key={e.dt} sm={12} md={6} lg={4} className="mt-5 ">
+                  <Card className=" d-flex my-3 justify-content-center align-items-center">
+                
+                    <Card.Body>
+                      <Card.Title>
+                        {e.name} {e.sys.country}
+                      </Card.Title>
+                      <Card.Text>data e ora: {e.dt_txt}</Card.Text>
+                      <Card.Text>temp-max {e.main.temp_max}°F</Card.Text>
+                      <Card.Text>temp-min {e.main.temp_min}°F</Card.Text>
+                      <Card.Text>vento, velocità: {e.wind.speed} kmh</Card.Text>
+                      <Card.Text>umidità: {e.main.humidity}%</Card.Text>
+                      <Card.Text>umidità: {e.weather[0].description}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                </Col>
+              );
+            })}
+        </>
+      )}
+    </>
   );
 };
 
