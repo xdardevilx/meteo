@@ -7,7 +7,7 @@ import Home from "./components/home";
 import Footer from "./components/footer";
 import DetailPage from "./components/detail-page";
 
-// puoi navigare nelle pagine senza problemi e per tornare alla home ti bastera cliccare sull'apposito bottone della posto sulla navbar
+// puoi navigare nelle pagine senza problemi e per tornare alla home ti bastera cliccare sull'apposito bottone posto sulla navbar
 
 // NB. per effettuare una ricerca per città ricordati di premere con il mouse su cerca
 
